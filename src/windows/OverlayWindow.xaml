@@ -7,15 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="Overlay Window"
-    Width="650"
-    Height="135"
-    MinWidth="650"
-    MinHeight="135"
+    Width="1112"
+    Height="176"
+    MinWidth="1112"
+    MinHeight="176"
     AllowsTransparency="True"
     Background="Transparent"
     MouseEnter="Window_MouseEnter"
     MouseLeave="Window_MouseLeave"
-    ResizeMode="CanResize"
+    ResizeMode="NoResize"
     ShowInTaskbar="False"
     Topmost="True"
     WindowStyle="None"
@@ -47,6 +47,12 @@
                         <Setter Property="TextWrapping" Value="Wrap" />
                         <Setter Property="VerticalAlignment" Value="Stretch" />
                     </Style>
+                    <Style x:Key="JapaneseStyle" TargetType="TextBlock" BasedOn="{StaticResource CaptionBlockStyle}">
+                        <Setter Property="FontFamily" Value="A-OTF UD Shin Go Pr6N M" />
+                    </Style>
+                    <Style x:Key="ChineseStyle" TargetType="TextBlock" BasedOn="{StaticResource CaptionBlockStyle}">
+                        <Setter Property="FontFamily" Value="MiSans Medium" />
+                    </Style>
                 </Grid.Resources>
 
                 <ui:Card
@@ -61,7 +67,7 @@
                         x:Name="OriginalCaption"
                         FontSize="15"
                         Foreground="#FFFFFFFF"
-                        Style="{StaticResource CaptionBlockStyle}"
+                        Style="{StaticResource JapaneseStyle}"
                         Text="{Binding OverlayOriginalCaption, UpdateSourceTrigger=PropertyChanged}">
                         <TextBlock.Effect>
                             <DropShadowEffect
@@ -85,7 +91,7 @@
                         x:Name="TranslatedCaption"
                         FontSize="18"
                         Foreground="#FFFFFFFF"
-                        Style="{StaticResource CaptionBlockStyle}"
+                        Style="{StaticResource ChineseStyle}"
                         Text="{Binding OverlayTranslatedCaption, UpdateSourceTrigger=PropertyChanged}">
                         <TextBlock.Effect>
                             <DropShadowEffect
