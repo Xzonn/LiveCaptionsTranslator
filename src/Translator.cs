@@ -270,6 +270,12 @@ namespace LiveCaptionsTranslator
                 return ($"[ERROR] Translation Failed: {ex.Message}", isChoke);
             }
 
+            foreach (var line in setting.Prompt.Replace("\r\n", "\n").Split('\n'))
+            {
+                if (line.StartsWith('#') || !line.Contains('\t')) { continue; }
+                var parts = line.Split('\t');
+                translatedText = translatedText.Replace(parts[0], parts[1]);
+            }
             return (translatedText, isChoke);
         }
 

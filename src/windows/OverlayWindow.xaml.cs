@@ -144,7 +144,7 @@ namespace LiveCaptionsTranslator
 
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
-            ControlPanel.Visibility = Visibility.Visible;
+            // ControlPanel.Visibility = Visibility.Visible;
         }
 
         private void Window_MouseLeave(object sender, MouseEventArgs e)
@@ -260,7 +260,7 @@ namespace LiveCaptionsTranslator
             var hwnd = new WindowInteropHelper(this).Handle;
             var extendedStyle = WindowsAPI.GetWindowLong(hwnd, WindowsAPI.GWL_EXSTYLE);
             WindowsAPI.SetWindowLong(hwnd, WindowsAPI.GWL_EXSTYLE, extendedStyle | WindowsAPI.WS_EX_TRANSPARENT);
-            ControlPanel.Visibility = Visibility.Collapsed;
+            // ControlPanel.Visibility = Visibility.Collapsed;
         }
 
         public void ApplyFontSize()
@@ -270,7 +270,7 @@ namespace LiveCaptionsTranslator
                 Dispatcher.BeginInvoke(new Action(() =>
                 {
                     this.OriginalCaption.FontSize = Translator.Setting.OverlayWindow.FontSize;
-                    this.TranslatedCaption.FontSize = (int)(this.OriginalCaption.FontSize * 1.1);
+                    this.TranslatedCaption.FontSize = (int)(this.OriginalCaption.FontSize * 1.5);
                 }), DispatcherPriority.Background);
             }
             else
@@ -278,7 +278,7 @@ namespace LiveCaptionsTranslator
                 Dispatcher.BeginInvoke(new Action(() =>
                 {
                     this.OriginalCaption.FontSize = Translator.Setting.OverlayWindow.FontSize;
-                    this.TranslatedCaption.FontSize = (int)(this.OriginalCaption.FontSize * 1.25);
+                    this.TranslatedCaption.FontSize = (int)(this.OriginalCaption.FontSize * 1.5);
                 }), DispatcherPriority.Background);
             }
         }

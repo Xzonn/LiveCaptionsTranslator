@@ -7,15 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="Overlay Window"
-    Width="650"
-    Height="135"
-    MinWidth="650"
-    MinHeight="135"
+    Width="1720"
+    Height="256"
+    MinWidth="1720"
+    MinHeight="256"
     AllowsTransparency="True"
     Background="Transparent"
     MouseEnter="Window_MouseEnter"
     MouseLeave="Window_MouseLeave"
-    ResizeMode="CanResize"
+    ResizeMode="NoResize"
     ShowInTaskbar="False"
     Topmost="True"
     WindowStyle="None"
@@ -37,15 +37,23 @@
             Background="#80000000"
             CornerRadius="8"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
-            <Grid>
+            <Grid VerticalAlignment="Bottom">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1.25*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.Resources>
                     <Style x:Key="CaptionBlockStyle" TargetType="TextBlock">
                         <Setter Property="TextWrapping" Value="Wrap" />
                         <Setter Property="VerticalAlignment" Value="Stretch" />
+                    </Style>
+                    <Style x:Key="JapaneseStyle" TargetType="TextBlock" BasedOn="{StaticResource CaptionBlockStyle}">
+                        <Setter Property="FontFamily" Value="Source Han Sans Regular" />
+                        <Setter Property="VerticalAlignment" Value="Bottom" />
+                    </Style>
+                    <Style x:Key="ChineseStyle" TargetType="TextBlock" BasedOn="{StaticResource CaptionBlockStyle}">
+                        <Setter Property="FontFamily" Value="MiSans SemiBold" />
+                        <Setter Property="VerticalAlignment" Value="Bottom" />
                     </Style>
                 </Grid.Resources>
 
@@ -61,7 +69,7 @@
                         x:Name="OriginalCaption"
                         FontSize="15"
                         Foreground="#FFFFFFFF"
-                        Style="{StaticResource CaptionBlockStyle}"
+                        Style="{StaticResource JapaneseStyle}"
                         Text="{Binding OverlayOriginalCaption, UpdateSourceTrigger=PropertyChanged}">
                         <TextBlock.Effect>
                             <DropShadowEffect
@@ -85,7 +93,7 @@
                         x:Name="TranslatedCaption"
                         FontSize="18"
                         Foreground="#FFFFFFFF"
-                        Style="{StaticResource CaptionBlockStyle}"
+                        Style="{StaticResource ChineseStyle}"
                         Text="{Binding OverlayTranslatedCaption, UpdateSourceTrigger=PropertyChanged}">
                         <TextBlock.Effect>
                             <DropShadowEffect
